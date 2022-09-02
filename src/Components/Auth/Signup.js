@@ -4,6 +4,8 @@ function Signup(){
     const eneteredmail=useRef()
     const eneteredpassword=useRef()
     const eneteredcpassword=useRef()
+
+
      function formHandler(event){
 
         const    email=eneteredmail.current.value
@@ -50,7 +52,7 @@ function Signup(){
                 <input type='password' ref={eneteredcpassword} />
                 <button>Signup</button>
             </form>
-            <button>Already Having Account ? Login Now !</button>
+            <button >Already Having Account ? Login Now !</button>
         </section>
     )
 }

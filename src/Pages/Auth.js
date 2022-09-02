@@ -38,6 +38,7 @@ function Auth(){
         if(res.ok){
           res.json().then(data=>{
             histroy.replace('/home')
+            localStorage.setItem('token',data.idToken)
           })
         }else{
           return res.json().then(data =>{

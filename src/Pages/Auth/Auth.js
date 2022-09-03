@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useHistory } from 'react-router-dom';
+import classes from '../Auth/Auth.module.css'
 function Auth(){
     const [isLogin, setIsLogin] = useState(true);
     const [isLoading,setIsLoading]=useState(false)
@@ -77,45 +78,50 @@ function Auth(){
                 headers:{
                     'Content-Type':'application/json'
                 }
-            }).then((res)=>{
-                res.json().then((data)=>{
-                    if(!data.ok){
-                        alert(data.error.message)
-                    }
+            }).then(res=>{
+              if(res.ok){
+                res.json().then(data=>{
+                  histroy.replace('/home')
                 })
+              }else{
+                return res.json().then(data =>{
+                  let errormessage='please check your mail or password'
+                    if(data && data.error && data.error.message){
+                      errormessage=data.error.message
+                    } 
+                    alert(errormessage)
+                })
+              }
             })
       }
   }
   
 
     return(
-        <section >
+        <section className={classes.card}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-      <form onSubmit={formHandler}>
-        <div >
-          <label htmlFor='email'>Your Email</label>
+      <form onSubmit={formHandler} className={classes.form}>
+        <div className={classes.details}>
+          <label htmlFor='email'>Your Email :</label>
           <input type='email' id='email' required ref={eneteredmail}  />
         </div>
-        <div >
-          <label htmlFor='password'>Your Password</label>
+        <div className={classes.details}>
+          <label htmlFor='password'>Enter Password :</label>
           <input type='password' id='password'  ref={eneteredpassword} required />
         </div>
 
-        {!isLogin && <div >
-          <label htmlFor='cpassword'>Your Password</label>
+        {!isLogin && <div className={classes.details}>
+          <label htmlFor='cpassword'>Confirm Password :</label>
           <input type='password' id='cpassword' ref={eneteredcpassword} required />
         </div>}
-    
-      
-        <div>
-          <button>{isLogin ? 'Login' : 'Create Account'}</button>
-          <button
+        <div className={classes.buttons}>
+          <button className={classes.login}>{isLogin ? 'Login' : 'Create Account'}</button>
+          <button className={classes.login}
             type='button'
             onClick={switchAuthModeHandler}
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
           </button>
-        {isLoading && <p>please wait signing up!</p>}
         </div>
       </form>
     </section>

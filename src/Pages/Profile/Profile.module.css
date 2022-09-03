@@ -1,0 +1,61 @@
+.profile{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+.profile h1{
+    font-size: 30px;
+
+}
+.profile h3{
+    font-size: 20px;
+}
+
+.profile p{
+    color: rgb(219, 23, 98);
+    font-weight: bold;
+}
+
+.profile button{
+    width: auto;
+    height: 30px;
+    font-weight: bold;
+    background-color: aqua;
+    border-radius: 8px;
+    padding: auto;
+}
+.updateprofile h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+    text-align: center;
+    padding: 30px;
+}
+.updatedetails{
+    display: flex;
+    width: 800px;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+.updateprofile button{
+    width: auto;
+    height: 30px;
+    font-weight: bold;
+    background-color: aqua;
+    border-radius: 8px;
+    margin-left: 40%;
+}
+.updateprofile label{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 10px;
+}
+
+.updateprofile input{
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 5px;
+    margin: 10px;
+}

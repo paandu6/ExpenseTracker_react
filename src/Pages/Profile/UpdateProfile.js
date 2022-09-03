@@ -33,7 +33,7 @@ function UpdateProfile(){
                     displayName:name,
                     photoUrl:img,
                     deleteAttribute:"PHOTO_URL",
-                    returnSecureToken:false
+                    returnSecureToken:true
                 }
             ),
             headers:{

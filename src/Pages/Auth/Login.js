@@ -95,6 +95,10 @@ function Login(){
       }
   }
   
+    function forgot(){
+      histroy.replace('/ForgotPassword')
+    }
+
 
     return(
         <section className={classes.card}>
@@ -121,6 +125,7 @@ function Login(){
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
           </button>
+          <button  className={classes.login} onClick={forgot}>Forgot Password</button>
         </div>
       </form>
     </section>

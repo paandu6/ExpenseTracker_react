@@ -6,6 +6,7 @@ import Login from './Pages/Auth/Login';
 import Home from './Pages/Profile/Home'
 import UpdateProfile from './Pages/Profile/UpdateProfile';
 import AuthContext, { AuthContextProvider } from './Storage/authContext';
+import ForgotPassword from './Pages/Auth/ForgotPassword';
 function App() {
   const ctx=useContext(AuthContext)
   return (
@@ -22,6 +23,9 @@ function App() {
       { <Route path="/updateprofile">
       <UpdateProfile />
       </Route>}
+      <Route path="/forgotpassword">
+      <ForgotPassword />
+      </Route>
       <Route path='*'>
         <Redirect to='/login'></Redirect>
       </Route>

@@ -1,20 +1,20 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import classes from '../Auth/Auth.module.css'
-function Auth(){
+import AuthContext from "../../Storage/authContext";
+function Login(){
     const [isLogin, setIsLogin] = useState(true);
-    const [isLoading,setIsLoading]=useState(false)
     const eneteredmail=useRef()
     const eneteredpassword=useRef()
     const eneteredcpassword=useRef()
     const histroy =useHistory()
-
+    const ctx=useContext(AuthContext)
 
     const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   }
   function formHandler(event){
-    event.preventDefault()
+    event.preventDefault();
     if(isLogin){
         const email=eneteredmail.current.value
         const password=eneteredpassword.current.value
@@ -24,7 +24,6 @@ function Auth(){
         if(password.trim().length <6){
             alert('enter valid password')
         }
-        event.preventDefault()
         fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDj_DUYhAYTNv7e1D6pd-blzYx8DlGkTDU',{
         method:'POST',
         body:JSON.stringify({
@@ -37,9 +36,9 @@ function Auth(){
           }
     }).then(res=>{
         if(res.ok){
-          res.json().then(data=>{
+            res.json().then(data=>{
+            ctx.Login(data.idToken)
             histroy.replace('/home')
-            localStorage.setItem('token',data.idToken)
           })
         }else{
           return res.json().then(data =>{
@@ -128,4 +127,4 @@ function Auth(){
     )
 }
 
-export default Auth
+export default Login

@@ -1,6 +1,9 @@
+import {  useContext } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./Profile.module.css";
+import AuthContext from "../../Storage/authContext";
 function Home() {
+  const ctx=useContext(AuthContext)
   const histroy = useHistory();
   function profile() {
     histroy.replace("/updateprofile");
@@ -8,7 +11,6 @@ function Home() {
   const id = localStorage.getItem("token");
   function verifymail(event) {
     event.preventDefault();
-    console.log(id);
     fetch(
         "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDj_DUYhAYTNv7e1D6pd-blzYx8DlGkTDU",
         {
@@ -23,6 +25,9 @@ function Home() {
       }
     ).then((res) => console.log(res));
   }
+  function Logout(){
+    ctx.Logout()
+  }
   return (
     <div className={classes.profile}>
       <div>
@@ -33,6 +38,8 @@ function Home() {
         <p>Your Profile is InComplete....</p>
         <button onClick={profile}>Complete profiles</button>
         <button onClick={verifymail}>Verify Mail</button>
+        <button onClick={Logout}>Logout</button>
+
       </div>
     </div>
   );

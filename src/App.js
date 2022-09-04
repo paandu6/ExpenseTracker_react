@@ -1,25 +1,32 @@
 import './App.css';
-import  { Fragment } from "react";
+import  { useContext } from "react";
 import React from 'react';
-import {Route, Switch,Redirect} from 'react-router-dom'
-import Auth from './Pages/Auth/Auth';
+import {Route, Redirect, Switch} from 'react-router-dom'
+import Login from './Pages/Auth/Login';
 import Home from './Pages/Profile/Home'
 import UpdateProfile from './Pages/Profile/UpdateProfile';
-
+import AuthContext, { AuthContextProvider } from './Storage/authContext';
 function App() {
+  const ctx=useContext(AuthContext)
   return (
-    <Fragment>
-      <Route path="/home">
+    <AuthContextProvider>
+      <Switch>
+    { <Route path="/login">
+      <Login />
+      </Route>}
+
+      { <Route path="/home">
       <Home />
       </Route>
-      <Route path="/auth">
-      <Auth />
-      </Route>
-      <Route path="/updateprofile">
+      }
+      { <Route path="/updateprofile">
       <UpdateProfile />
+      </Route>}
+      <Route path='*'>
+        <Redirect to='/login'></Redirect>
       </Route>
-    </Fragment>
-  
+      </Switch>
+    </AuthContextProvider>
   );
 }
 

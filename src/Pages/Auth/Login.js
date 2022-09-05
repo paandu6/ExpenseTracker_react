@@ -117,6 +117,9 @@ function Login(){
           <label htmlFor='cpassword'>Confirm Password :</label>
           <input type='password' id='cpassword' ref={eneteredcpassword} required />
         </div>}
+        
+        <p  className={classes.forgot} onClick={forgot}>Forgot Password ? Click To Reset</p>
+        
         <div className={classes.buttons}>
           <button className={classes.login}>{isLogin ? 'Login' : 'Create Account'}</button>
           <button className={classes.login}
@@ -125,7 +128,6 @@ function Login(){
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
           </button>
-          <button  className={classes.login} onClick={forgot}>Forgot Password</button>
         </div>
       </form>
     </section>

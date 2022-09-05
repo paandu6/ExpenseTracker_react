@@ -2,6 +2,7 @@ import {  useContext } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./Profile.module.css";
 import AuthContext from "../../Storage/authContext";
+import NewExpense from "../Expenses/NewExpense";
 function Home() {
   const ctx=useContext(AuthContext)
   const histroy = useHistory();
@@ -29,6 +30,7 @@ function Home() {
     ctx.Logout()
   }
   return (
+    <div>
     <div className={classes.profile}>
       <div>
         <h1>Welcome To Expense Tracker</h1>
@@ -39,9 +41,10 @@ function Home() {
         <button onClick={profile}>Complete profiles</button>
         <button onClick={verifymail}>Verify Mail</button>
         <button onClick={Logout}>Logout</button>
-
       </div>
     </div>
+    <NewExpense />
+      </div>
   );
 }
 export default Home;

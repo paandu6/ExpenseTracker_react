@@ -1,0 +1,48 @@
+.card{
+    width: 700px;
+    max-width: 100%;
+    height: auto;
+    background-color: antiquewhite;
+    margin: auto;
+}
+.form{
+    margin: auto;
+    padding: 30px;
+}
+.expenseform{
+    display: flex;
+    justify-content: space-between;
+ 
+}
+.expenseform input{
+    width: 30%;
+    border: solid 3px black ;
+    border-radius: 5px;
+    height: 20px;
+}
+.expenseform select{
+    width: 20%;
+    border: solid 3px black ;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.expenseform button{
+    width: auto;
+    font-weight: bold;
+    background-color: aqua;
+    border: solid 3px black ;
+    border-radius: 5px;
+}   
+
+.expenselist h2{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.itemslist{
+    list-style: none;
+    line-height: 20px;
+}
+.itemslist li{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}

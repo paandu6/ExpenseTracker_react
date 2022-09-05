@@ -1,5 +1,5 @@
 import { useRef } from "react"
-
+import classes from './Auth.module.css'
 function ForgotPassword(){
     const emailinput=useRef()
 
@@ -18,12 +18,15 @@ function ForgotPassword(){
         })
     }
     return(
-        <div>
+        <div className={classes.card}>
         <h1>Entere your mail id</h1>
         <form onSubmit={resetpassword}>
+        <div className={classes.passworddetails}>
+        <label>Eneter Your Mail</label>
         <input type='text' ref={emailinput}/>
+        </div>
         </form>
-        <button >Reset Password</button>
+        <button className={classes.forgotbtn}>Reset Password</button>
         </div>
     )
 }

@@ -7,9 +7,11 @@ import Home from './Pages/Profile/Home'
 import UpdateProfile from './Pages/Profile/UpdateProfile';
 import AuthContext, { AuthContextProvider } from './Storage/authContext';
 import ForgotPassword from './Pages/Auth/ForgotPassword';
+import { ExpensesContectProvider } from './Storage/expenseContext';
 function App() {
   const ctx=useContext(AuthContext)
   return (
+    <ExpensesContectProvider>
     <AuthContextProvider>
       <Switch>
     { <Route path="/login">
@@ -31,6 +33,7 @@ function App() {
       </Route>
       </Switch>
     </AuthContextProvider>
+    </ExpensesContectProvider>
   );
 }
 

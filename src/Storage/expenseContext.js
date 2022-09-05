@@ -16,14 +16,12 @@ export const  ExpensesContectProvider=(props)=>{
         // setexpenses((prvexpensedata)=>{
         //     return[expense, ...prvexpensedata]
         // })
-        console.log(expense)
         setexpenses([...ctx.expense, expense])
     }
     function editHandler(){
         
     }
     function deleteHandler(){
-
     }
     const ctx={
         expense:addedexpenses,

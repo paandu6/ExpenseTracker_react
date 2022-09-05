@@ -14,7 +14,6 @@ export const AuthContextProvider=(props)=>{
     const [token,setToken]=useState(null)
 
     let userLoggedIn= !!token
-    console.log(token)
     function loginHandler(token){
         setToken(token)
         localStorage.setItem('token',token)

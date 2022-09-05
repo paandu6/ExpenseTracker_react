@@ -11,11 +11,11 @@ function ExpensesForm(props){
         const enteredamount=amountinput.current.value
         const entereddescription=descriptioninput.current.value
         const enteredcategory=categoryinput.current.value
-        const data=[{
+        const data={
             amount:enteredamount,
             description:entereddescription,
             category:enteredcategory
-        }]
+        }
         ctx.addexpense(data)
 
         // fetch('https://expensetracker-16802-default-rtdb.firebaseio.com/expenses.json',{
@@ -25,12 +25,14 @@ function ExpensesForm(props){
         //         'Content-Type':'application/json'
         //     }
         // }).then(res=>console.log(res))
+
+      
     }
     return(
         <div className={classes.card}>
             <div className={classes.form}>
             <form onSubmit={formHandler} className={classes.expenseform}>
-                <input type='text' ref={amountinput} placeholder='Entere amount' />
+                <input type='text' ref={amountinput} placeholder='Entere amount'  />
                 <input type='text' ref={descriptioninput} placeholder='Eneter description' />
                 <select id="cars" name="cars" ref={categoryinput} >
                 <option value="movies">Movie</option>

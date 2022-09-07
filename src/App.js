@@ -17,7 +17,7 @@ function App() {
     <AuthContextProvider>
       <Switch>
     {!isLoggedin && <Route path="/login">
-      <Login />
+      <Login  />
       </Route>}
 
       {isLoggedin && <Route path="/home">

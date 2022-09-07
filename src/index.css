@@ -1,5 +1,10 @@
 body {
 margin: 0;
 }
-
+.lightTheme{
+    background-color: rgb(214, 210, 205);
+}
+.darkTheme{
+    background-color: rgb(71, 192, 186);
+}
 

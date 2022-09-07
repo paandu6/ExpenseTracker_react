@@ -4,9 +4,26 @@ import NewExpense from "../Expenses/NewExpense";
 import { authactions } from "../../Storage/authredux";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 function Home() {
   const totalamount=useSelector(state=>state.expense.totalamount)
+  let [theme,setTheme]=useState('lightTheme')
+  const data=useSelector(state=>state.expense.expensedata)
+  function changeTheme(){
+    if(theme ==='lightTheme'){
+      setTheme('darkTheme')
+    }else{
+      setTheme('lightTheme')
+    }
+  }
+
+
+useEffect(()=>{
+  document.body.className=theme
+},[theme])
+
   
+
   const dispatch=useDispatch()
   const histroy = useHistory();
   function profile() {
@@ -33,19 +50,31 @@ function Home() {
   dispatch(authactions.logout())
   histroy.replace('/auth')
   }
+  function csvdownload(data){
+    return data.map(data =>data.join(',')).join("\n")
+  }
+  const blob=new Blob([csvdownload(data)])
+  const url=URL.createObjectURL(blob)
+
+  
+
   return (
     <div>
     <div className={classes.profile}>
       <div>
         <h1>Welcome To Expense Tracker</h1>
         <h3>Track your expenses in a easy way</h3>
+        <a href={url} download='file.csv'>Download expenses</a>
       </div>
       <div>
-        <p>Your Profile is InComplete....</p>
+        <p >Your Profile is InComplete....</p>
         <button onClick={profile}>Complete profiles</button>
         <button onClick={verifymail}>Verify Mail</button>
         <button onClick={Logout}>Logout</button>
-        {totalamount >10000 &&<button >Premium</button>}
+        {totalamount >10000 &&
+        <button >Premium</button>}
+
+        <button onClick={changeTheme}>Change Theme</button>
       </div>
     </div>
     <NewExpense />

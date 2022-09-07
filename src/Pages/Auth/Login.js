@@ -123,7 +123,7 @@ function Login(){
           <input type='password' id='cpassword' ref={eneteredcpassword} required />
         </div>}
         
-        <p  className={classes.forgot} onClick={forgot}>Forgot Password ? Click To Reset</p>
+        <p className={classes.forgot} onClick={forgot}>Forgot Password ? Click To Reset</p>
         
         <div className={classes.buttons}>
           <button className={classes.login}>{isLogin ? 'Login' : 'Create Account'}</button>

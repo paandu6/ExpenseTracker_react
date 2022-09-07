@@ -3,8 +3,10 @@ import classes from "./Profile.module.css";
 import NewExpense from "../Expenses/NewExpense";
 import { authactions } from "../../Storage/authredux";
 import { useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 function Home() {
+  const totalamount=useSelector(state=>state.expense.totalamount)
+  
   const dispatch=useDispatch()
   const histroy = useHistory();
   function profile() {
@@ -43,6 +45,7 @@ function Home() {
         <button onClick={profile}>Complete profiles</button>
         <button onClick={verifymail}>Verify Mail</button>
         <button onClick={Logout}>Logout</button>
+        {totalamount >10000 &&<button >Premium</button>}
       </div>
     </div>
     <NewExpense />

@@ -1,7 +1,11 @@
 import { useContext, useRef } from "react"
 import classes from './Expenses.module.css'
 import ExpenseContext from "../../Storage/expenseContext"
+import { expenseactions } from "../../Storage/expenseredux"
+import { useDispatch } from "react-redux"
+
 function ExpensesForm(props){
+    const dispatch=useDispatch()
     const amountinput=useRef()
     const descriptioninput=useRef()
     const categoryinput=useRef()
@@ -11,13 +15,15 @@ function ExpensesForm(props){
         const enteredamount=amountinput.current.value
         const entereddescription=descriptioninput.current.value
         const enteredcategory=categoryinput.current.value
+        const amountnumber=+enteredamount
         const data={
             amount:enteredamount,
             description:entereddescription,
             category:enteredcategory
         }
         ctx.addexpense(data)
-
+        dispatch (expenseactions.addedexpenses(data))
+        dispatch(expenseactions.totalamount(amountnumber))
         // fetch('https://expensetracker-16802-default-rtdb.firebaseio.com/expenses.json',{
         //     method:'POST',
         //     body:JSON.stringify(data),

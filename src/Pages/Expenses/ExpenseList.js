@@ -1,16 +1,10 @@
 import { useContext, useEffect } from "react"
+import { useSelector } from "react-redux"
 import ExpenseContext from "../../Storage/expenseContext"
 import classes from './Expenses.module.css'
-const data=[
-    {amount:'100',
-    title:'expense-1',
-    description:'tour'},
-    {amount:'200',
-    title:'expense-2',
-    description:"movie"}
-]
+
 function ExpenseList(props){
-const ctx=useContext(ExpenseContext)    
+   const expensedata=useSelector(state=>state.expense.expensedata)
 
     // useEffect(onLoad,[])
 
@@ -31,7 +25,6 @@ const ctx=useContext(ExpenseContext)
     //     })
     // }
 
-    console.log(ctx.expense)
 
 
   
@@ -53,7 +46,7 @@ function deletehandler(){
         <div className={classes.expenselist}>
         <h2>Your Expenses</h2>
         <ul>
-            {ctx.expense.map((item)=>(
+            {expensedata.map((item)=>(
             <li>{item.amount} {item.description}{item.category}
             <button>edit</button>
             <button>delete</button>

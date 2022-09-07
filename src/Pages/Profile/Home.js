@@ -1,10 +1,11 @@
-import {  useContext } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./Profile.module.css";
-import AuthContext from "../../Storage/authContext";
 import NewExpense from "../Expenses/NewExpense";
+import { authactions } from "../../Storage/authredux";
+import { useDispatch } from "react-redux";
+
 function Home() {
-  const ctx=useContext(AuthContext)
+  const dispatch=useDispatch()
   const histroy = useHistory();
   function profile() {
     histroy.replace("/updateprofile");
@@ -27,7 +28,8 @@ function Home() {
     ).then((res) => console.log(res));
   }
   function Logout(){
-    ctx.Logout()
+  dispatch(authactions.logout())
+  histroy.replace('/auth')
   }
   return (
     <div>

@@ -2,7 +2,12 @@ import { useState, useRef, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import classes from '../Auth/Auth.module.css'
 import AuthContext from "../../Storage/authContext";
+import { authactions } from "../../Storage/authredux";
+import { useDispatch } from "react-redux";
+
+
 function Login(){
+  const dispatch =useDispatch()
     const [isLogin, setIsLogin] = useState(true);
     const eneteredmail=useRef()
     const eneteredpassword=useRef()
@@ -37,7 +42,7 @@ function Login(){
     }).then(res=>{
         if(res.ok){
             res.json().then(data=>{
-            ctx.Login(data.idToken)
+            dispatch(authactions.login(data.idToken))
             histroy.replace('/home')
           })
         }else{
